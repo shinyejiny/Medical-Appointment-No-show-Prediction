@@ -112,9 +112,19 @@ The dashboard (screenshot above) is a single-page interactive Power BI report bu
 
 | File | Description |
 |---|---|
+| `noshowprediction.ipynb` | Full pipeline: EDA, preprocessing, SMOTE, model training and evaluation |
 | `model_metrics.csv` | Performance metrics and confusion-matrix counts for both models |
 | `feature_importance.csv` | XGBoost feature importance scores |
 | `images/` | Figures from the technical report |
+
+## How to Run
+
+1. Download `KaggleV2-May-2016.csv` from the [Kaggle dataset page](https://www.kaggle.com/datasets/joniarroba/noshowappointments) and place it next to the notebook. The dataset itself is not included in this repository.
+2. Install the dependencies:
+   ```bash
+   pip install pandas numpy matplotlib seaborn scikit-learn xgboost imbalanced-learn jupyter
+   ```
+3. Open `noshowprediction.ipynb` and run all cells.
 
 ## Limitations & Future Work
 
