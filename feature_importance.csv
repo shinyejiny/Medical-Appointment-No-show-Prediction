@@ -1,0 +1,10 @@
+Feature,Importance
+WaitingDays,0.2708
+SMS_received,0.1248
+Hipertension,0.1082
+Handcap,0.1066
+Gender,0.0974
+Scholarship,0.0812
+Alcoholism,0.0758
+Age,0.0683
+Diabetes,0.0668

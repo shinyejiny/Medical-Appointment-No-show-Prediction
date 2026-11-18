@@ -50,19 +50,38 @@ Medical appointment no-shows waste clinical time, reduce revenue and lengthen wa
 | Precision (no-show) | **0.31** | 0.30 |
 | Recall (no-show) | **0.69** | 0.55 |
 | F1-score | **0.43** | 0.39 |
-| ROC-AUC | **0.65** | 0.61 |
+| ROC-AUC | **0.653** | 0.612 |
 | No-shows detected (of 4,464) | **3,101** | 2,433 |
+| No-shows missed | **1,363** | 2,031 |
+| False positives | 6,846 | **5,681** |
+
+*Source: [`model_metrics.csv`](model_metrics.csv)*
 
 Recall on the no-show class is the key metric. A missed no-show means lost clinical time with no chance to step in, which costs more than an unnecessary reminder. XGBoost detects **668 more no-shows** than Logistic Regression. Its lower precision (more false alarms) is an acceptable trade-off for a reminder system.
 
 ### Key insights
-- **`WaitingDays` is the strongest predictor** (~27% of XGBoost's feature importance). The longer the wait, the higher the no-show rate.
+- **`WaitingDays` is the strongest predictor** (~27% of XGBoost's feature importance), more than twice the next feature, `SMS_received` (~12%). The longer the wait, the higher the no-show rate.
+
+| Feature | Importance |
+|---|---|
+| WaitingDays | 0.2708 |
+| SMS_received | 0.1248 |
+| Hipertension | 0.1082 |
+| Handcap | 0.1066 |
+| Gender | 0.0974 |
+| Scholarship | 0.0812 |
+| Alcoholism | 0.0758 |
+| Age | 0.0683 |
+| Diabetes | 0.0668 |
+
+*Source: [`feature_importance.csv`](feature_importance.csv)*
+
 - Patients who received an SMS had a *higher* no-show rate. This likely reflects selection bias: clinics already sent SMS reminders to patients they judged high-risk.
 - Health conditions (hypertension, diabetes) carry relatively little predictive weight compared with scheduling and patient factors.
 
 ## Power BI Dashboard
 
-`Assignment2_YEJINSHIN.pbix` is a single-page interactive report built from four CSV files exported by the Python pipeline. It contains:
+The dashboard (screenshot above) is a single-page interactive Power BI report built from four CSV files exported by the Python pipeline. It contains:
 
 - **Cards:** total appointments, overall no-show rate, XGBoost recall, best ROC-AUC
 - **Charts:**
@@ -93,8 +112,8 @@ Recall on the no-show class is the key metric. A missed no-show means lost clini
 
 | File | Description |
 |---|---|
-| `Assignment2_YEJINSHIN.pbix` | Power BI dashboard |
-| `Assignment2_YEJINSHIN_1576240.csv.code-workspace` | VS Code workspace file |
+| `model_metrics.csv` | Performance metrics and confusion-matrix counts for both models |
+| `feature_importance.csv` | XGBoost feature importance scores |
 | `images/` | Figures from the technical report |
 
 ## Limitations & Future Work

@@ -1,0 +1,3 @@
+Model,Accuracy,Precision_NoShow,Recall_NoShow,F1_Score_NoShow,ROC_AUC,NoShows_Caught,NoShows_Missed,True_Negative,False_Positive,False_Negative,True_Positive
+XGBoost,0.63,0.31,0.69,0.43,0.6533,3101,1363,10796,6846,1363,3101
+Logistic Regression,0.65,0.3,0.55,0.39,0.6115,2433,2031,11961,5681,2031,2433
